@@ -21,10 +21,10 @@ This is a simple React app that allows users to track arbitrage opportunities be
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/bharathbabu-moralis/crypto-arbitrage-tracker-moralis
-   cd frontend
-   ```
+```bash
+git clone https://github.com/bharathbabu-moralis/crypto-arbitrage-tracker-moralis
+cd frontend
+```
 
 2. Install dependencies:
 ```bash
