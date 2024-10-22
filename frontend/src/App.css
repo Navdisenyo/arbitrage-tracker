@@ -1,0 +1,192 @@
+/* Container Styling */
+.app {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 900px;
+  margin: 100px auto;
+  padding: 40px 20px;
+  background-color: #f9fafc;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Input Section Styling */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.token-input {
+  width: 80%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1.1rem; /* Match the font size with the dropdown */
+  transition: all 0.3s;
+}
+
+.token-input::placeholder {
+  font-size: 1.1rem; /* Match the placeholder font size with the dropdown */
+}
+
+.token-input:focus {
+  border-color: #007bff;
+}
+
+
+.network-select {
+  width: 80%;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.fetch-btn {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.fetch-btn:hover {
+  background-color: #0056b3;
+}
+
+.fetch-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Results Section */
+.results {
+  margin-top: 20px;
+}
+
+/* Individual Card Styling */
+.pair-info {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+.pair-info:hover {
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Exchange Details Layout */
+.exchange-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.exchange {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #f7f9fc;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  transition: transform 0.3s ease;
+}
+
+.exchange:hover {
+  transform: translateY(-5px);
+}
+
+.exchange h4 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.exchange p {
+  margin: 8px 0;
+}
+
+.token-logo {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.price-diff {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #d9534f;
+  text-align: center;
+  margin-top: 10px;
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.moralis-logo {
+  width: 220px;
+}
+
+/* Loader Styling */
+.loader {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #333;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .app {
+    padding: 15px;
+  }
+
+  .token-input,
+  .network-select {
+    width: 100%;
+  }
+
+  .exchange-details {
+    flex-direction: column;
+  }
+
+  .exchange {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
