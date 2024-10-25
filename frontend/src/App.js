@@ -14,8 +14,11 @@ const App = () => {
     { value: "eth", label: "Ethereum" },
     { value: "bsc", label: "Binance Smart Chain" },
     { value: "polygon", label: "Polygon" },
+    { value: "base", label: "Base" },
+    { value: "optimism", label: "Optimism" },
+    { value: "arbitrum", label: "Arbitrum" },
   ];
-
+  
   const getBlockExplorerUrl = (network) => {
     switch (network) {
       case "eth":
@@ -24,10 +27,17 @@ const App = () => {
         return "https://bscscan.com/address/";
       case "polygon":
         return "https://polygonscan.com/address/";
+      case "base":
+        return "https://basescan.org/address/";
+      case "optimism":
+        return "https://optimistic.etherscan.io/address/";
+      case "arbitrum":
+        return "https://arbiscan.io/address/";
       default:
         return "https://etherscan.io/address/";
     }
   };
+  
 
   const fetchArbitrageOpportunities = async () => {
     setLoading(true);
