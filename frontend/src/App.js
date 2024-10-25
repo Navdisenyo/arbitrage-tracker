@@ -32,56 +32,60 @@ const App = () => {
   const fetchArbitrageOpportunities = async () => {
     setLoading(true);
     setLoadingText("Fetching all token pair data...");
-
+  
     try {
       const apiKey = process.env.REACT_APP_MORALIS_API_KEY;
       const url = `https://deep-index.moralis.io/api/v2.2/erc20/${tokenAddress}/pairs?chain=${network}`;
+      
       const response = await fetch(url, {
         headers: {
           accept: "application/json",
           "X-API-Key": apiKey,
         },
       });
-
+      
       const data = await response.json();
       const pairs = data.pairs;
       setAllTokenPairs(pairs);
-
+  
       setLoadingText("Finding possible arbitrage opportunities...");
-
-      const groupedByPair = pairs.reduce((acc, pair) => {
+  
+      const groupedByPair = {};
+      
+      for (const pair of pairs) {
         if (pair.exchange_name) {
-          if (!acc[pair.pair_label]) {
-            acc[pair.pair_label] = [];
+          const pairLabel = pair.pair_label;
+          
+          if (!groupedByPair[pairLabel]) {
+            groupedByPair[pairLabel] = [];
           }
-          acc[pair.pair_label].push(pair);
+          
+          groupedByPair[pairLabel].push(pair);
         }
-        return acc;
-      }, {});
-
-      const opportunities = Object.keys(groupedByPair)
-        .map((pairLabel) => {
-          const exchanges = groupedByPair[pairLabel];
-          exchanges.sort((a, b) => b.usd_price - a.usd_price);
-
-          if (exchanges.length >= 2) {
-            const highestPriceExchange = exchanges[0];
-            const lowestPriceExchange = exchanges[exchanges.length - 1];
-            const priceDifference =
-              highestPriceExchange.usd_price - lowestPriceExchange.usd_price;
-
-            return {
-              pairLabel,
-              highestPriceExchange,
-              lowestPriceExchange,
-              priceDifference,
-            };
-          }
-
-          return null;
-        })
-        .filter(Boolean);
-
+      }
+  
+      const opportunities = [];
+      
+      for (const pairLabel in groupedByPair) {
+        const exchanges = groupedByPair[pairLabel];
+        
+        exchanges.sort((a, b) => b.usd_price - a.usd_price);
+  
+        if (exchanges.length >= 2) {
+          const highestPriceExchange = exchanges[0];
+          const lowestPriceExchange = exchanges[exchanges.length - 1];
+  
+          const priceDifference = highestPriceExchange.usd_price - lowestPriceExchange.usd_price;
+  
+          opportunities.push({
+            pairLabel,
+            highestPriceExchange,
+            lowestPriceExchange,
+            priceDifference,
+          });
+        }
+      }
+  
       setArbitrageOpportunities(opportunities);
     } catch (error) {
       console.error("Error fetching arbitrage opportunities:", error);
@@ -89,6 +93,8 @@ const App = () => {
       setLoading(false);
     }
   };
+  
+
 
   const handleNetworkChange = (selectedOption) => {
     setNetwork(selectedOption.value);
