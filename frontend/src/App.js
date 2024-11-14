@@ -113,7 +113,7 @@ const App = () => {
   return (
     <div className="app">
       <h1 className="title">Crypto Arbitrage Tracker</h1>
-      <p style={{ textAlign: "center" }}>Built using Moralis Token Pairs API</p>
+      <p style={{ textAlign: "center" }}>Built using EVM Token Pairs API</p>
       <div className="input-section">
         <input
           type="text"
@@ -261,11 +261,12 @@ const App = () => {
       )}
 
       <footer>
-        <img
-          src="https://moralis-portfolio-staging-f5f5e6cfeae8.herokuapp.com/images/Powered-by-Moralis-Badge-Text-Grey.svg"
-          alt="Powered by Moralis"
-          className="moralis-logo"
-        />
+        // <img
+        //   src="https://moralis-portfolio-staging-f5f5e6cfeae8.herokuapp.com/images/Powered-by-Moralis-Badge-Text-Grey.svg"
+        //   alt="Powered by Moralis"
+        //   className="moralis-logo"
+        // />
+        <p>&copy; 2024 Navdisenyo Creations Pvt.Ltd | All rights reserved </P>
       </footer>
     </div>
   );
